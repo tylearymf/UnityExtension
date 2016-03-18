@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
-
+using UnityEngine.EventSystems;
 
 static public class UnityExtension
 {
-    static public void ResetTransformation(this Transform trans)
+    static public void SetLocalX(this Transform tr,float x)
     {
-        trans.position = Vector3.zero;
-        trans.localRotation = Quaternion.identity;
-        trans.localScale = new Vector3(1, 1, 1);
+        Vector3 pos = tr.localPosition;
+        pos.x = x;
+        tr.localPosition = pos;
     }
 
-    static public void ChangeGameObjectName(this GameObject go,string name)
-    {
-        go.name = name;
-    }
 }
 
