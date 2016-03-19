@@ -21,6 +21,102 @@ static public class UnityExtension
     }
 
     /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="tr"></param>
+    /// <param name="y"></param>
+    static public void SetLocalY(this Transform tr, float y)
+    {
+        Vector3 pos = tr.localPosition;
+        pos.y = y;
+        tr.localPosition = pos;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="tr"></param>
+    /// <param name="z"></param>
+    static public void SetLocalZ(this Transform tr, float z)
+    {
+        Vector3 pos = tr.localPosition;
+        pos.z = z;
+        tr.localPosition = pos;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="tr"></param>
+    /// <param name="x"></param>
+    static public void SetX(this Transform tr, float x)
+    {
+        Vector3 pos = tr.position;
+        pos.x = x;
+        tr.position = pos;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="tr"></param>
+    /// <param name="y"></param>
+    static public void SetY(this Transform tr, float y)
+    {
+        Vector3 pos = tr.position;
+        pos.y = y;
+        tr.position = pos;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="tr"></param>
+    /// <param name="z"></param>
+    static public void SetZ(this Transform tr, float z)
+    {
+        Vector3 pos = tr.position;
+        pos.z = z;
+        tr.position = pos;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="tr"></param>
+    /// <param name="x"></param>
+    static public void SetScaleX(this Transform tr, float x)
+    {
+        Vector3 scale = tr.localScale;
+        scale.x = x;
+        tr.localScale = scale;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="tr"></param>
+    /// <param name="y"></param>
+    static public void SetScaleY(this Transform tr, float y)
+    {
+        Vector3 scale = tr.localScale;
+        scale.y = y;
+        tr.localScale = scale;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="tr"></param>
+    /// <param name="z"></param>
+    static public void SetScaleZ(this Transform tr, float z)
+    {
+        Vector3 scale = tr.localScale;
+        scale.z = z;
+        tr.localScale = scale;
+    }
+
+    /// <summary>
     /// 2D对象跟随3D对象（仅限UGUI）
     /// </summary>
     /// <param name="mainCamera">3D世界主相机</param>
@@ -39,7 +135,7 @@ static public class UnityExtension
     /// <param name="mono"></param>
     /// <param name="seconds"></param>
     /// <param name="method"></param>
-    static public void InvokeDelegate(this MonoBehaviour mono,float seconds,Action method)
+    static public void StartCoroutine(this MonoBehaviour mono,float seconds,Action method)
     {
         if(method != null)
         {
@@ -51,6 +147,17 @@ static public class UnityExtension
     {
         yield return new WaitForSeconds(seconds);
         method();
+    }
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="mono"></param>
+    /// <param name="target"></param>
+    /// <returns></returns>
+    static public GameObject Instantiate(this MonoBehaviour mono,GameObject target)
+    {
+        return UnityEngine.Object.Instantiate(target) as GameObject;
     }
 }
 
