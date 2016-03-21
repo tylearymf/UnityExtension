@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -158,6 +159,26 @@ static public class UnityExtension
     static public GameObject Instantiate(this MonoBehaviour mono,GameObject target)
     {
         return UnityEngine.Object.Instantiate(target) as GameObject;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="thePoint"></param>
+    /// <param name="polygon"></param>
+    /// <returns></returns>
+    static public bool IsPointInPolygon(this Vector2 thePoint,Vector2[] polygon)
+    {
+        polygon = polygon.OrderBy(p => p.x).ToArray();
+        float minX = polygon[0].x;
+        float maxX = polygon[polygon.Length - 1].x;
+        polygon = polygon.OrderBy(p => p.y).ToArray();
+        float minY = polygon[0].y;
+        float maxY = polygon[polygon.Length - 1].y;
+
+        if (thePoint.x < minX || thePoint.x > maxX || thePoint.y < minY || thePoint.y > maxY)
+            return false;
+        return true;
     }
 }
 
