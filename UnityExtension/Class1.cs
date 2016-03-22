@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 /// <summary>
 /// 
@@ -179,6 +181,36 @@ static public class UnityExtension
         if (thePoint.x < minX || thePoint.x > maxX || thePoint.y < minY || thePoint.y > maxY)
             return false;
         return true;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="input"></param>
+    /// <param name="method"></param>
+    static public void OnEndEdit(this InputField input,UnityAction<string> method)
+    {
+        if (method != null)
+        {
+            InputField.SubmitEvent sub = new InputField.SubmitEvent();
+            sub.AddListener(method);
+            input.onEndEdit = sub;
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="input"></param>
+    /// <param name="method"></param>
+    static public void OnValueChange(this InputField input,UnityAction<string> method)
+    {
+        if(method != null)
+        {
+            InputField.OnChangeEvent change = new InputField.OnChangeEvent();
+            change.AddListener(method);
+            input.onValueChange = change;
+        }
     }
 }
 
