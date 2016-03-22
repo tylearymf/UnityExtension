@@ -212,5 +212,35 @@ static public class UnityExtension
             input.onValueChange = change;
         }
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="vec"></param>
+    /// <param name="x"></param>
+    static public void SetX(this Vector3 vec,float x)
+    {
+        vec.x = x;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="vec"></param>
+    /// <param name="y"></param>
+    static public void SetY(this Vector3 vec,float y)
+    {
+        vec.y = y;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="vec"></param>
+    /// <param name="z"></param>
+    static public void SetZ(this Vector3 vec,float z)
+    {
+        vec.z = z;
+    }
 }
 
