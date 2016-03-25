@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -241,6 +242,22 @@ static public class UnityExtension
     static public void SetZ(this Vector3 vec,float z)
     {
         vec.z = z;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="list"></param>
+    static public void ClearAllObject(this List<GameObject> list)
+    {
+        if(list != null && list.Count > 0)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                UnityEngine.Object.Destroy(list[i]);
+            }
+            list.Clear();
+        }
     }
 }
 
