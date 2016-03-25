@@ -245,7 +245,7 @@ static public class UnityExtension
     }
 
     /// <summary>
-    /// 
+    /// 清空并删除Object
     /// </summary>
     /// <param name="list"></param>
     static public void ClearAllObject(this List<GameObject> list)
@@ -257,6 +257,23 @@ static public class UnityExtension
                 UnityEngine.Object.Destroy(list[i]);
             }
             list.Clear();
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="obj"></param>
+    /// <returns></returns>
+    static public GameObject ToGameObject(this UnityEngine.Object obj)
+    {
+        try
+        {
+            return obj as GameObject;
+        }
+        catch
+        {
+            return null;
         }
     }
 }
