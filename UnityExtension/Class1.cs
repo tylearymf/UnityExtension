@@ -139,27 +139,27 @@ static public class UnityExtension
     /// <param name="mono"></param>
     /// <param name="seconds"></param>
     /// <param name="method"></param>
-    static public void StartCoroutine(this MonoBehaviour mono,float seconds,Action method)
+    static public void StartCoroutine(this MonoBehaviour mono, float seconds, Action method)
     {
-        if(method != null)
+        if (method != null)
         {
             mono.StartCoroutine(DelayCall(seconds, method));
         }
     }
 
-    static private IEnumerator DelayCall(float seconds,Action method)
+    static private IEnumerator DelayCall(float seconds, Action method)
     {
         yield return new WaitForSeconds(seconds);
         method();
     }
-    
+
     /// <summary>
     /// 
     /// </summary>
     /// <param name="mono"></param>
     /// <param name="target"></param>
     /// <returns></returns>
-    static public GameObject Instantiate(this MonoBehaviour mono,GameObject target)
+    static public GameObject Instantiate(this MonoBehaviour mono, GameObject target)
     {
         return UnityEngine.Object.Instantiate(target) as GameObject;
     }
@@ -170,7 +170,7 @@ static public class UnityExtension
     /// <param name="thePoint"></param>
     /// <param name="polygon"></param>
     /// <returns></returns>
-    static public bool IsPointInPolygon(this Vector2 thePoint,Vector2[] polygon)
+    static public bool IsPointInPolygon(this Vector2 thePoint, Vector2[] polygon)
     {
         polygon = polygon.OrderBy(p => p.x).ToArray();
         float minX = polygon[0].x;
@@ -189,7 +189,7 @@ static public class UnityExtension
     /// </summary>
     /// <param name="input"></param>
     /// <param name="method"></param>
-    static public void OnEndEdit(this InputField input,UnityAction<string> method)
+    static public void OnEndEdit(this InputField input, UnityAction<string> method)
     {
         if (method != null)
         {
@@ -204,9 +204,9 @@ static public class UnityExtension
     /// </summary>
     /// <param name="input"></param>
     /// <param name="method"></param>
-    static public void OnValueChange(this InputField input,UnityAction<string> method)
+    static public void OnValueChange(this InputField input, UnityAction<string> method)
     {
-        if(method != null)
+        if (method != null)
         {
             InputField.OnChangeEvent change = new InputField.OnChangeEvent();
             change.AddListener(method);
@@ -219,7 +219,7 @@ static public class UnityExtension
     /// </summary>
     /// <param name="vec"></param>
     /// <param name="x"></param>
-    static public void SetX(this Vector3 vec,float x)
+    static public void SetX(this Vector3 vec, float x)
     {
         vec.x = x;
     }
@@ -229,7 +229,7 @@ static public class UnityExtension
     /// </summary>
     /// <param name="vec"></param>
     /// <param name="y"></param>
-    static public void SetY(this Vector3 vec,float y)
+    static public void SetY(this Vector3 vec, float y)
     {
         vec.y = y;
     }
@@ -239,7 +239,7 @@ static public class UnityExtension
     /// </summary>
     /// <param name="vec"></param>
     /// <param name="z"></param>
-    static public void SetZ(this Vector3 vec,float z)
+    static public void SetZ(this Vector3 vec, float z)
     {
         vec.z = z;
     }
@@ -250,7 +250,7 @@ static public class UnityExtension
     /// <param name="list"></param>
     static public void ClearAllObject(this List<GameObject> list)
     {
-        if(list != null && list.Count > 0)
+        if (list != null && list.Count > 0)
         {
             for (int i = 0; i < list.Count; i++)
             {
@@ -267,14 +267,7 @@ static public class UnityExtension
     /// <returns></returns>
     static public GameObject ToGameObject(this UnityEngine.Object obj)
     {
-        try
-        {
-            return obj as GameObject;
-        }
-        catch
-        {
-            return null;
-        }
+        return (obj as GameObject);
     }
 }
 
