@@ -187,36 +187,6 @@ static public class UnityExtension
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="input"></param>
-    /// <param name="method"></param>
-    static public void OnEndEdit(this InputField input, UnityAction<string> method)
-    {
-        if (method != null)
-        {
-            InputField.SubmitEvent sub = new InputField.SubmitEvent();
-            sub.AddListener(method);
-            input.onEndEdit = sub;
-        }
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="input"></param>
-    /// <param name="method"></param>
-    static public void OnValueChange(this InputField input, UnityAction<string> method)
-    {
-        if (method != null)
-        {
-            InputField.OnChangeEvent change = new InputField.OnChangeEvent();
-            change.AddListener(method);
-            input.onValueChange = change;
-        }
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
     /// <param name="vec"></param>
     /// <param name="x"></param>
     static public void SetX(this Vector3 vec, float x)
@@ -267,7 +237,20 @@ static public class UnityExtension
     /// <returns></returns>
     static public GameObject ToGameObject(this UnityEngine.Object obj)
     {
+        
         return (obj as GameObject);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="obj"></param>
+    /// <param name="target"></param>
+    /// <returns></returns>
+    static public T Instantiate<T>(this UnityEngine.Object obj,UnityEngine.Object target) where T : Component
+    {
+        return ((UnityEngine.Object.Instantiate(target) as GameObject).GetComponent(typeof(T)) as T);
     }
 }
 
