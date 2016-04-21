@@ -159,9 +159,15 @@ static public class UnityExtension
     /// <param name="mono"></param>
     /// <param name="target"></param>
     /// <returns></returns>
-    static public GameObject Instantiate(this MonoBehaviour mono, GameObject target)
+    static public GameObject instantiate(this MonoBehaviour mono, GameObject target,Transform parent)
     {
-        return UnityEngine.Object.Instantiate(target) as GameObject;
+        GameObject go = UnityEngine.Object.Instantiate(target) as GameObject;
+        if (parent != null)
+            go.transform.parent = parent;
+        go.transform.localPosition = Vector3.zero;
+        go.transform.localScale = Vector3.one;
+        go.transform.localEulerAngles = Vector3.zero;
+        return go;
     }
 
     /// <summary>
@@ -248,7 +254,7 @@ static public class UnityExtension
     /// <param name="obj"></param>
     /// <param name="target"></param>
     /// <returns></returns>
-    static public T Instantiate<T>(this UnityEngine.Object obj,UnityEngine.Object target) where T : Component
+    static public T instantiate<T>(this UnityEngine.Object obj,UnityEngine.Object target) where T : Component
     {
         return ((UnityEngine.Object.Instantiate(target) as GameObject).GetComponent(typeof(T)) as T);
     }
