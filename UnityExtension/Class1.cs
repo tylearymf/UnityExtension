@@ -258,5 +258,21 @@ static public class UnityExtension
     {
         return ((UnityEngine.Object.Instantiate(target) as GameObject).GetComponent(typeof(T)) as T);
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="list"></param>
+    static public List<string> RemoveNullOrEmpty(this List<string> list)
+    {
+        for (int i = 0; i < list.Count; i++)
+        {
+            if (string.IsNullOrEmpty(list[i]))
+            {
+                list.RemoveAt(i);
+            }
+        }
+        return list;
+    }
 }
 
