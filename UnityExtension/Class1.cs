@@ -276,32 +276,6 @@ static public class UnityExtension
     }
 
     /// <summary>
-    /// 获取子对象集合
-    /// </summary>
-    /// <param name="transform"></param>
-    /// <returns></returns>
-    static public List<Transform> GetChilds(this Transform transform)
-    {
-        if (transform == null)
-        {
-            throw new NullReferenceException("传入的Transform为空！！！");
-        }
-
-        int childCount = transform.childCount;
-
-        if (childCount == 0)
-            throw new NullReferenceException("该Transform没有子对象！！！");
-
-        var trans = new List<Transform>();
-        for (int i = 0; i < childCount; i++)
-        {
-            trans.Add(transform.GetChild(i));
-        }
-
-        return trans;
-    }
-
-    /// <summary>
     /// 
     /// </summary>
     /// <param name="transform"></param>
