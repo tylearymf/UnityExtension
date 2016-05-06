@@ -300,5 +300,15 @@ static public class UnityExtension
 
         return trans;
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="transform"></param>
+    /// <returns></returns>
+    static public T AddComponent<T>(this Transform transform) where T : Component
+    {
+        return transform.gameObject.AddComponent<T>();
+    }
 }
 
