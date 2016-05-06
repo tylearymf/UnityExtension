@@ -275,6 +275,11 @@ static public class UnityExtension
         return list;
     }
 
+    /// <summary>
+    /// 获取子对象集合
+    /// </summary>
+    /// <param name="transform"></param>
+    /// <returns></returns>
     static public List<Transform> GetChilds(this Transform transform)
     {
         if (transform == null)
